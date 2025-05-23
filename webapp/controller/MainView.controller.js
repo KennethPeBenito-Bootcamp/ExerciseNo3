@@ -29,6 +29,8 @@ sap.ui.define([
             var sSelectedKey = oEvent.getParameter("selectedItem").getProperty("key");
             var oMobileLabel = this.getView().byId("idLblPhone");
             var oMobileInput = this.getView().byId("idInputPhone");
+            var oCreditCardLabel = this.getView().byId("idLblCC");
+            var oCreditCardInput = this.getView().byId("idInputCC");
 
             if (sSelectedKey === "GCASH"){
                 // show the mobile field
@@ -38,13 +40,22 @@ sap.ui.define([
                 oMobileLabel.setVisible(false);
                 oMobileInput.setVisible(false);
             }
+
+            if (sSelectedKey === "CC"){
+                // show the credit card field
+                oCreditCardLabel.setVisible(true);
+                oCreditCardInput.setVisible(true);
+            } else {
+                oCreditCardLabel.setVisible(false);
+                oCreditCardInput.setVisible(false);
+            }
         },
 
         onPressCheckout: function (){
             var oInputFNameValue = this.getView().byId("idInptFName").getValue();
-
-            // Check if first name is blank
-            if (oInputFNameValue === ""){
+            var oInputLNameValue = this.getView().byId("idInptLName").getValue();
+            // Check if first name and last name is blank
+            if (oInputFNameValue === "" || oInputLNameValue === ""){
                 sap.m.MessageToast.show("Required Field is blank"); 
             }
         },

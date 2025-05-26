@@ -27,6 +27,10 @@ sap.ui.define([
 
         onChangeMOP: function (oEvent) {
             var sSelectedKey = oEvent.getParameter("selectedItem").getProperty("key");
+            var sSelectedText = oEvent.getParameter("selectedItem").getText(); 
+
+            // Display the selected mode of payment text
+            MessageToast.show(sSelectedText);
             var oMobileLabel = this.getView().byId("idLblPhone");
             var oMobileInput = this.getView().byId("idInputPhone");
             var oCreditCardLabel = this.getView().byId("idLblCC");
